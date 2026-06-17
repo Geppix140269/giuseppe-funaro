@@ -39,6 +39,14 @@ nav.scrolled{background:rgba(13,27,42,.92)}
 /* HERO */
 header.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
   background:radial-gradient(ellipse at 70% 20%,rgba(199,154,75,.16),transparent 55%),linear-gradient(160deg,#0d1b2a,#0a141f 60%,#0d1b2a)}
+.hero-inner-grid{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+@media(max-width:860px){.hero-inner-grid{grid-template-columns:1fr}}
+.hero-photo-wrap{position:relative;flex-shrink:0;opacity:0;animation:rise .9s .6s forwards}
+.hero-photo-wrap img{width:260px;height:340px;object-fit:cover;object-position:center top;border-radius:18px;display:block;
+  box-shadow:0 0 0 3px rgba(199,154,75,.35),0 28px 60px rgba(0,0,0,.55)}
+.hero-photo-wrap::before{content:'';position:absolute;inset:-3px;border-radius:21px;
+  background:linear-gradient(140deg,var(--accent2),transparent 60%);z-index:-1;opacity:.6}
+@media(max-width:860px){.hero-photo-wrap{display:none}}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse at 60% 40%,#000 30%,transparent 75%);opacity:.5}
 .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:float 14s ease-in-out infinite}
 .orb1{width:380px;height:380px;background:rgba(199,154,75,.28);top:-80px;right:-60px}
@@ -155,12 +163,19 @@ footer .accent{font-style:italic}
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="wrap hero-in">
-    <span class="eyebrow">Chief Executive · Managing Director</span>
-    <h1><span class="ln">Building and scaling</span><span class="ln"><em>international</em> businesses</span></h1>
-    <p class="hero-sub">Thirty-plus years of full P&amp;L leadership across the UK, Europe and the US. Trade intelligence, commercial growth, and purpose-led international organisations.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Get in touch</a>
-      <a href="#experience" class="btn btn-ghost">View career</a>
+    <div class="hero-inner-grid">
+      <div>
+        <span class="eyebrow">Chief Executive · Managing Director</span>
+        <h1><span class="ln">Building and scaling</span><span class="ln"><em>international</em> businesses</span></h1>
+        <p class="hero-sub">Thirty-plus years of full P&amp;L leadership across the UK, Europe and the US. Trade intelligence, commercial growth, and purpose-led international organisations.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#experience" class="btn btn-ghost">View career</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="photo.png" alt="Giuseppe Funaro">
+      </div>
     </div>
   </div>
   <div class="scroll-hint">Scroll<span></span></div>
@@ -289,6 +304,7 @@ footer .accent{font-style:italic}
       <p>Open to chief executive, managing director and senior advisory mandates in international, purpose-led organisations. Available UK-based or remote, with travel.</p>
       <div class="contact-links">
         <a href="mailto:g.funaro@1402celsius.com" class="btn btn-primary">g.funaro@1402celsius.com</a>
+        <a href="https://wa.me/34650635404" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
         <a href="https://www.linkedin.com/in/giuseppe-funaro/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       </div>
     </div>
