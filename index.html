@@ -210,6 +210,15 @@ section{padding:108px 0;position:relative}
 footer{padding:34px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 footer .accent{font-style:italic}
 
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:100px;right:28px;z-index:99;width:40px;height:40px;border-radius:50%;
+  background:rgba(13,27,42,.85);border:1px solid rgba(227,193,120,.35);color:var(--accent2);
+  font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);transition:.3s;backdrop-filter:blur(8px)}
+.back-top.visible{opacity:1;transform:none}
+.back-top:hover{background:rgba(199,154,75,.15);border-color:var(--accent2)}
+@media(max-width:480px){.back-top{bottom:96px;right:12px}}
+
 /* CHAT WIDGET */
 .chat-btn{position:fixed;bottom:28px;right:28px;z-index:100;width:58px;height:58px;border-radius:50%;
   background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;cursor:pointer;
@@ -556,7 +565,12 @@ footer .accent{font-style:italic}
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const backTop=document.getElementById('backTop');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>40);
+  backTop.classList.toggle('visible',scrollY>400);
+});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -574,6 +588,8 @@ function count(el){
 const lio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bar i').forEach(i=>i.style.width=i.dataset.w+'%');lio.unobserve(e.target);}})},{threshold:.3});
 document.querySelectorAll('.lang-row').forEach(el=>lio.observe(el));
 </script>
+
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
 <!-- CHAT WIDGET -->
 <button class="chat-btn" id="chatBtn" aria-label="Chat with Giuseppe's assistant">
