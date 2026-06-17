@@ -26,7 +26,7 @@ exports.handler = async function(event) {
 
   // Email to visitor with CV link
   const visitorEmail = {
-    from: 'Giuseppe Funaro <onboarding@resend.dev>',
+    from: 'Giuseppe Funaro <hello@send.giuseppefunaro.com>',
     to: [email],
     subject: 'Giuseppe Funaro — CV enclosed',
     html: `
@@ -62,7 +62,7 @@ exports.handler = async function(event) {
 
   // Notification to Giuseppe with lead details
   const notificationEmail = {
-    from: 'CV Gate <hello@giuseppefunaro.com>',
+    from: 'CV Gate <hello@send.giuseppefunaro.com>',
     to: ['hello@giuseppefunaro.com'],
     subject: `New CV request — ${name}${company ? ` (${company})` : ''}`,
     html: `
