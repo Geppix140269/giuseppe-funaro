@@ -176,6 +176,17 @@ section{padding:108px 0;position:relative}
 .bar{height:7px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
 .bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
 
+/* HOW I ENGAGE */
+.engage{background:linear-gradient(180deg,#0d1b2a,#0a141f)}
+.engage-intro{font-size:18px;color:#c4d0dc;max-width:720px;font-weight:300;margin-bottom:48px;line-height:1.7}
+.engage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:680px){.engage-grid{grid-template-columns:1fr}}
+.engage-card{border:1px solid var(--line);border-radius:14px;padding:30px;background:rgba(255,255,255,.02);transition:.3s}
+.engage-card:hover{border-color:rgba(227,193,120,.4);background:rgba(199,154,75,.05);transform:translateY(-4px)}
+.engage-icon{font-size:28px;margin-bottom:14px}
+.engage-card h3{font-family:'Fraunces',serif;font-size:20px;color:#fff;margin-bottom:10px;font-weight:600}
+.engage-card p{font-size:15px;color:#9aa7b4;font-weight:300;line-height:1.6}
+
 /* CONTACT */
 .contact{background:#0a141f;text-align:center}
 .contact h2{font-size:clamp(30px,5vw,48px);color:#fff}
@@ -424,6 +435,35 @@ footer .accent{font-style:italic}
         <div class="lang"><div class="lang-top"><b>Italian</b><span>Mother tongue</span></div><div class="bar"><i data-w="100"></i></div></div>
         <div class="lang"><div class="lang-top"><b>English</b><span>Fluent</span></div><div class="bar"><i data-w="97"></i></div></div>
         <div class="lang"><div class="lang-top"><b>Spanish</b><span>Fluent</span></div><div class="bar"><i data-w="95"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="engage" id="engage">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="sec-tag">How I Engage</div><h2>A small number of mandates, done properly</h2></div>
+    <p class="engage-intro reveal">I take on a select number of engagements each year — situations where commercial rigour, cross-cultural leadership and senior relationships decide the outcome. If you are building something that matters, let's talk.</p>
+    <div class="engage-grid">
+      <div class="engage-card reveal">
+        <div class="engage-icon">⚡</div>
+        <h3>CEO & MD Mandates</h3>
+        <p>Full executive leadership of international businesses — P&L ownership, team building, market entry and scaling.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-icon">🎯</div>
+        <h3>Board & Advisory</h3>
+        <p>Strategic counsel to boards and founders navigating international expansion, regulatory environments or commercial pivots.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-icon">🤝</div>
+        <h3>Joint Ventures & Special Projects</h3>
+        <p>Structuring and leading cross-border partnerships, supply chain initiatives and market-entry ventures with the right partners.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-icon">🌍</div>
+        <h3>Trade & Government Relations</h3>
+        <p>Representing organisations at policy level — trade bodies, multilateral institutions, regulators and government stakeholders.</p>
       </div>
     </div>
   </div>
