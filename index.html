@@ -54,7 +54,17 @@ nav.scrolled{background:rgba(13,27,42,.92)}
 .nav-cv{font-size:13px;font-weight:600;padding:7px 16px;border:1px solid rgba(227,193,120,.4);border-radius:7px;color:var(--accent2) !important;transition:.2s}
 .nav-cv:hover{background:rgba(199,154,75,.12);border-color:var(--accent2)}
 .nav-cv::after{display:none !important}
-@media(max-width:680px){.nav-links{display:none}}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px}
+.nav-burger span{display:block;height:2px;width:100%;background:var(--accent2);border-radius:2px;transition:.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:rgba(13,27,42,.97);border-bottom:1px solid var(--line);padding:8px 28px 18px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.mobile-menu.open{max-height:420px}
+.mobile-menu a{color:#e8edf2;font-size:16px;font-weight:500;padding:12px 0;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-child{border-bottom:none;margin-top:8px}
+.mobile-menu .nav-cv{display:inline-block;color:var(--accent2) !important;border:1px solid rgba(227,193,120,.4);border-radius:7px;padding:10px 16px;text-align:center}
+@media(max-width:680px){.nav-links{display:none}.nav-burger{display:flex}.mobile-menu{display:flex}}
 
 /* HERO */
 header.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
@@ -360,6 +370,18 @@ footer .accent{font-style:italic}
       <a href="#contact">Contact</a>
       <a href="#" onclick="openCVModal(event)" class="nav-cv">↓ Download CV</a>
     </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">Profile</a>
+    <a href="#stats">Impact</a>
+    <a href="#experience">Experience</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#insights">Insights</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="openCVModal(event)" class="nav-cv">↓ Download CV</a>
   </div>
 </nav>
 
@@ -633,6 +655,19 @@ footer .accent{font-style:italic}
 document.getElementById('yr').textContent=new Date().getFullYear();
 const nav=document.getElementById('nav');
 const backTop=document.getElementById('backTop');
+
+// mobile menu
+const navBurger=document.getElementById('navBurger');
+const mobileMenu=document.getElementById('mobileMenu');
+if(navBurger&&mobileMenu){
+  const closeMenu=()=>{navBurger.classList.remove('open');mobileMenu.classList.remove('open');navBurger.setAttribute('aria-expanded','false');};
+  navBurger.addEventListener('click',()=>{
+    const open=mobileMenu.classList.toggle('open');
+    navBurger.classList.toggle('open',open);
+    navBurger.setAttribute('aria-expanded',open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+}
 addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',scrollY>40);
   if(backTop)backTop.classList.toggle('visible',scrollY>400);
