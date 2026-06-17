@@ -634,9 +634,9 @@ const nav=document.getElementById('nav');
 const backTop=document.getElementById('backTop');
 addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',scrollY>40);
-  backTop.classList.toggle('visible',scrollY>400);
+  if(backTop)backTop.classList.toggle('visible',scrollY>400);
 });
-backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
