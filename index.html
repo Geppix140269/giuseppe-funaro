@@ -176,6 +176,20 @@ section{padding:108px 0;position:relative}
 .bar{height:7px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
 .bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
 
+/* INSIGHTS */
+.insights{background:#0a141f}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:780px){.insights-grid{grid-template-columns:1fr}}
+.ins-card{border:1px solid var(--line);border-radius:14px;padding:28px;background:rgba(255,255,255,.02);transition:.3s;display:flex;flex-direction:column}
+.ins-card:hover{border-color:rgba(227,193,120,.4);background:rgba(199,154,75,.05);transform:translateY(-4px)}
+.ins-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:14px}
+.ins-card h3{font-family:'Fraunces',serif;font-size:20px;color:#fff;line-height:1.25;margin-bottom:12px;font-weight:600}
+.ins-card p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.6;flex:1}
+.ins-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.ins-read{font-size:13px;color:var(--accent2);font-weight:600}
+.ins-time{font-size:12px;color:var(--muted)}
+.insights-more{text-align:center;margin-top:36px}
+
 /* HOW I ENGAGE */
 .engage{background:linear-gradient(180deg,#0d1b2a,#0a141f)}
 .engage-intro{font-size:18px;color:#c4d0dc;max-width:720px;font-weight:300;margin-bottom:48px;line-height:1.7}
@@ -320,6 +334,7 @@ footer .accent{font-style:italic}
       <a href="#stats">Impact</a>
       <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
+      <a href="#insights">Insights</a>
       <a href="#contact">Contact</a>
       <a href="cv.pdf" download class="nav-cv">↓ Download CV</a>
     </div>
@@ -482,6 +497,35 @@ footer .accent{font-style:italic}
         <div class="lang"><div class="lang-top"><b>English</b><span>Fluent</span></div><div class="bar"><i data-w="97"></i></div></div>
         <div class="lang"><div class="lang-top"><b>Spanish</b><span>Fluent</span></div><div class="bar"><i data-w="95"></i></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="sec-tag">Insights</div><h2>Perspectives on international business</h2></div>
+    <div class="insights-grid">
+      <a href="/blog/trade-intelligence.html" class="ins-card reveal">
+        <div class="ins-tag">Trade Intelligence</div>
+        <h3>Why Trade Intelligence Is the Next Competitive Frontier</h3>
+        <p>Customs data and real-time trade flows are no longer just compliance tools. They are the new competitive intelligence.</p>
+        <div class="ins-footer"><span class="ins-read">Read article →</span><span class="ins-time">5 min</span></div>
+      </a>
+      <a href="/blog/market-entry.html" class="ins-card reveal">
+        <div class="ins-tag">International Expansion</div>
+        <h3>What 35 Years of International Expansion Taught Me About Market Entry</h3>
+        <p>The lessons that actually decide outcomes in new markets are the ones nobody writes down.</p>
+        <div class="ins-footer"><span class="ins-read">Read article →</span><span class="ins-time">6 min</span></div>
+      </a>
+      <a href="/blog/cross-cultural-leadership.html" class="ins-card reveal">
+        <div class="ins-tag">Leadership</div>
+        <h3>Leading Across Cultures: Why Commercial Acumen Alone Isn't Enough</h3>
+        <p>What cross-cultural leadership actually requires — and what it doesn't — after 18 countries and three languages.</p>
+        <div class="ins-footer"><span class="ins-read">Read article →</span><span class="ins-time">5 min</span></div>
+      </a>
+    </div>
+    <div class="insights-more reveal">
+      <a href="/blog/" class="btn btn-ghost">View all articles</a>
     </div>
   </div>
 </section>
