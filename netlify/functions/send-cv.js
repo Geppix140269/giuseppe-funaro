@@ -80,7 +80,7 @@ exports.handler = async function(event) {
 
   try {
     // Send both emails in parallel
-    await Promise.all([visitorEmail, notificationEmail].map(payload =>
+    const results = await Promise.all([visitorEmail, notificationEmail].map(payload =>
       fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -88,18 +88,28 @@ exports.handler = async function(event) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
-      }).then(r => r.json())
+      }).then(async r => ({ status: r.status, body: await r.json() }))
     ));
+
+    // Surface any Resend-level errors
+    const failed = results.find(r => r.status >= 400);
+    if (failed) {
+      return {
+        statusCode: 502,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Resend rejected the request', detail: failed.body })
+      };
+    }
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ok: true })
+      body: JSON.stringify({ ok: true, results })
     };
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' })
+      body: JSON.stringify({ error: 'Failed to send email', detail: String(err) })
     };
   }
 };
