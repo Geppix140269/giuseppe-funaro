@@ -198,6 +198,59 @@ section{padding:108px 0;position:relative}
 
 footer{padding:34px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 footer .accent{font-style:italic}
+
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;color:#111;font-size:11pt}
+  nav,.hero-grid,.orb,.scroll-hint,.hero-photo-wrap,.hero-photo-mobile,
+  .companies,.contact-form,.btn-dl,.btn-ghost,footer{display:none!important}
+  header.hero{min-height:auto;background:none;padding:28pt 0 18pt;page-break-after:avoid}
+  .hero-inner-grid{display:block}
+  .hero h1{font-size:26pt;color:#0d1b2a;opacity:1;transform:none;animation:none}
+  .hero h1 em{color:#c79a4b}
+  .eyebrow{opacity:1;transform:none;animation:none;border-color:#c79a4b;color:#c79a4b;font-size:8pt}
+  .hero-sub{opacity:1;transform:none;animation:none;color:#444;font-size:11pt;margin-top:10pt}
+  .hero-location{opacity:1;animation:none;color:#888}
+  .hero-cta{display:flex;gap:8pt;opacity:1;animation:none}
+  .btn-primary{background:#c79a4b;color:#fff;padding:6pt 14pt;border-radius:4pt;font-size:9pt}
+  section{padding:18pt 0;page-break-inside:avoid}
+  .about{background:none}
+  .about-grid{grid-template-columns:1.4fr 1fr;gap:24pt}
+  .about p{color:#333;font-size:10.5pt}
+  .card-quote{border:1pt solid #c79a4b;background:#fffdf7;border-radius:6pt;padding:14pt}
+  .card-quote .serif{color:#222;font-size:12pt}
+  .card-quote .who{color:#c79a4b}
+  .stats{background:none}
+  .stat-grid{grid-template-columns:repeat(4,1fr)}
+  .stat{border:1pt solid #ddd;border-radius:6pt;padding:10pt}
+  .stat .num{color:#c79a4b;font-size:22pt}
+  .stat .lbl{color:#666;font-size:9pt}
+  .sec-tag{color:#c79a4b}
+  .sec-head h2{color:#0d1b2a;font-size:18pt}
+  .timeline::before{background:#c79a4b}
+  .tl-dot{border-color:#c79a4b;background:#fff}
+  .tl-when{color:#c79a4b}
+  .tl-role{color:#0d1b2a;font-size:13pt}
+  .tl-org{color:#666}
+  .tl-item li{color:#333}
+  .tl-item li::before{background:#c79a4b}
+  .exp{background:none}
+  .exp-grid{grid-template-columns:repeat(3,1fr);gap:10pt}
+  .chip{border:1pt solid #ddd;border-radius:6pt;padding:10pt}
+  .chip h3{color:#0d1b2a;font-size:10pt}
+  .chip p{color:#666;font-size:9pt}
+  .bar{background:#eee}
+  .bar i{background:#c79a4b}
+  .lang .lang-top b{color:#0d1b2a}
+  .lang .lang-top span{color:#c79a4b}
+  .contact{background:none;text-align:left}
+  .contact h2{color:#0d1b2a;font-size:18pt}
+  .contact p{color:#444}
+  .contact-links .btn-primary{background:#c79a4b;color:#fff;padding:6pt 14pt;font-size:9pt;border-radius:4pt}
+  .reveal{opacity:1;transform:none}
+  h1,h2,h3{page-break-after:avoid}
+  .tl-item{page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
