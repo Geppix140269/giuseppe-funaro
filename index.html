@@ -224,6 +224,27 @@ section{padding:108px 0;position:relative}
 footer{padding:34px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 footer .accent{font-style:italic}
 
+/* CV GATE MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:.25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--navy2);border:1px solid rgba(227,193,120,.25);border-radius:18px;
+  padding:36px;max-width:420px;width:100%;transform:translateY(20px) scale(.97);transition:.25s}
+.modal-overlay.open .modal{transform:none}
+.modal h3{font-family:'Fraunces',serif;font-size:24px;color:#fff;margin-bottom:8px}
+.modal p{font-size:15px;color:var(--muted);margin-bottom:24px;font-weight:300;line-height:1.6}
+.modal-field{margin-bottom:14px}
+.modal-field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+.modal-field input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:12px 14px;color:#e8edf2;font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:.2s}
+.modal-field input:focus{border-color:rgba(227,193,120,.5)}
+.modal-submit{width:100%;margin-top:8px;justify-content:center;font-size:15px;padding:14px}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+.modal-close:hover{color:#fff}
+.modal-wrap{position:relative}
+.modal-note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
 /* BACK TO TOP */
 .back-top{position:fixed;bottom:100px;right:28px;z-index:99;width:40px;height:40px;border-radius:50%;
   background:rgba(13,27,42,.85);border:1px solid rgba(227,193,120,.35);color:var(--accent2);
@@ -336,7 +357,7 @@ footer .accent{font-style:italic}
       <a href="#expertise">Expertise</a>
       <a href="#insights">Insights</a>
       <a href="#contact">Contact</a>
-      <a href="cv.pdf" download class="nav-cv">↓ Download CV</a>
+      <a href="#" onclick="openCVModal(event)" class="nav-cv">↓ Download CV</a>
     </div>
   </div>
 </nav>
@@ -357,7 +378,7 @@ footer .accent{font-style:italic}
         <p class="hero-sub">Thirty-plus years of full P&amp;L leadership across the UK, Europe and the US. Trade intelligence, commercial growth, and purpose-led international organisations.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn btn-primary">Get in touch</a>
-          <a href="cv.pdf" download class="btn btn-dl">↓ Download CV</a>
+          <a href="#" onclick="openCVModal(event)" class="btn btn-dl">↓ Download CV</a>
           <a href="#experience" class="btn btn-ghost">View career</a>
         </div>
       </div>
@@ -566,9 +587,10 @@ footer .accent{font-style:italic}
       <p>Open to chief executive, managing director and senior advisory mandates in international, purpose-led organisations. Available Barcelona / London-based or remote, with travel.</p>
       <div class="contact-links">
         <a href="mailto:hello@giuseppefunaro.com" class="btn btn-primary">hello@giuseppefunaro.com</a>
+        <a href="https://calendly.com/hello-giuseppefunaro/30min" target="_blank" rel="noopener" class="btn btn-ghost">📅 Book a call</a>
         <a href="https://wa.me/34650635404" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
         <a href="https://www.linkedin.com/in/giuseppe-funaro/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-        <a href="cv.pdf" download class="btn btn-dl">↓ Download CV</a>
+        <a href="#" onclick="openCVModal(event)" class="btn btn-dl">↓ Download CV</a>
       </div>
 
       <div class="contact-form">
@@ -634,6 +656,33 @@ document.querySelectorAll('.lang-row').forEach(el=>lio.observe(el));
 </script>
 
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<!-- CV GATE MODAL -->
+<div class="modal-overlay" id="cvModal">
+  <div class="modal modal-wrap">
+    <button class="modal-close" id="cvModalClose">×</button>
+    <h3>Get my CV</h3>
+    <p>Enter your email and the PDF will be sent to you directly. I may follow up personally.</p>
+    <form id="cvForm" action="https://formspree.io/f/xaqzzyrr" method="POST">
+      <input type="hidden" name="_subject" value="CV Download Request">
+      <input type="hidden" name="_next" value="about:blank">
+      <div class="modal-field">
+        <label for="cvName">Your name</label>
+        <input type="text" id="cvName" name="name" required placeholder="Full name">
+      </div>
+      <div class="modal-field">
+        <label for="cvEmail">Your email</label>
+        <input type="email" id="cvEmail" name="email" required placeholder="your@email.com">
+      </div>
+      <div class="modal-field">
+        <label for="cvCompany">Company <span style="color:var(--muted);font-size:11px">(optional)</span></label>
+        <input type="text" id="cvCompany" name="company" placeholder="Organisation">
+      </div>
+      <button type="submit" class="btn btn-primary modal-submit">Send me the CV</button>
+      <p class="modal-note">Your details go only to Giuseppe. No mailing lists, ever.</p>
+    </form>
+  </div>
+</div>
 
 <!-- CHAT WIDGET -->
 <button class="chat-btn" id="chatBtn" aria-label="Chat with Giuseppe's assistant">
@@ -711,6 +760,24 @@ async function sendMsg(){
     addMsg('Something went wrong. Please try emailing hello@giuseppefunaro.com','bot');
   }
 }
+
+// CV Modal
+function openCVModal(e){e.preventDefault();document.getElementById('cvModal').classList.add('open')}
+document.getElementById('cvModalClose').addEventListener('click',()=>document.getElementById('cvModal').classList.remove('open'));
+document.getElementById('cvModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+document.getElementById('cvForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.modal-submit');
+  btn.textContent='Sending…';btn.disabled=true;
+  try{
+    await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
+    document.getElementById('cvModal').classList.remove('open');
+    // trigger download
+    const a=document.createElement('a');a.href='/cv.pdf';a.download='Giuseppe_Funaro_CV.pdf';a.click();
+    btn.textContent='Send me the CV';btn.disabled=false;
+    this.reset();
+  }catch(err){btn.textContent='Send me the CV';btn.disabled=false;}
+});
 
 function addMsg(text,cls){
   const d=document.createElement('div');
