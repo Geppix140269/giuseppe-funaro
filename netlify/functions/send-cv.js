@@ -22,13 +22,13 @@ exports.handler = async function(event) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Server configuration error' }) };
   }
 
-  const cvUrl = 'https://giuseppefunaro.com/cv.pdf';
+  const cvUrl = 'https://giuseppefunaro.com/Giuseppe_Funaro_CV.pdf';
 
   // Email to visitor with CV link
   const visitorEmail = {
     from: 'Giuseppe Funaro <hello@send.giuseppefunaro.com>',
     to: [email],
-    subject: 'Giuseppe Funaro — CV enclosed',
+    subject: 'Giuseppe Funaro - CV enclosed',
     html: `
       <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1a1a2e;padding:32px 24px">
         <p style="font-size:17px;line-height:1.6;margin-bottom:20px">Dear ${name},</p>
@@ -42,13 +42,12 @@ exports.handler = async function(event) {
           </a>
         </p>
         <p style="font-size:17px;line-height:1.6;margin-bottom:20px">
-          If you'd like to explore how I might be able to help — whether as an advisor, interim executive,
-          or on a specific project — I'm happy to find 30 minutes to talk.
+          If you are considering a senior executive appointment with international scope, I would be happy to arrange a conversation about the role, the organisation and where my experience could contribute.
         </p>
         <p style="text-align:center;margin:28px 0">
           <a href="https://calendly.com/hello-giuseppefunaro/30min"
              style="border:1px solid #c79a4b;color:#c79a4b;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:15px;display:inline-block">
-            Book a call
+            Arrange a conversation
           </a>
         </p>
         <p style="font-size:17px;line-height:1.6;margin-top:32px">
@@ -64,14 +63,14 @@ exports.handler = async function(event) {
   const notificationEmail = {
     from: 'CV Gate <hello@send.giuseppefunaro.com>',
     to: ['hello@giuseppefunaro.com'],
-    subject: `New CV request — ${name}${company ? ` (${company})` : ''}`,
+    subject: `New CV request - ${name}${company ? ` (${company})` : ''}`,
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;color:#333;padding:24px">
         <h2 style="margin-bottom:20px">New CV download request</h2>
         <table style="width:100%;border-collapse:collapse">
           <tr><td style="padding:8px 0;color:#666;width:90px">Name</td><td style="padding:8px 0"><strong>${name}</strong></td></tr>
           <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0"><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:8px 0;color:#666">Company</td><td style="padding:8px 0">${company || '—'}</td></tr>
+          <tr><td style="padding:8px 0;color:#666">Company</td><td style="padding:8px 0">${company || '-'}</td></tr>
         </table>
         <p style="margin-top:20px;color:#666;font-size:13px">CV link sent automatically.</p>
       </div>
