@@ -42,7 +42,7 @@ exports.handler = async function(event) {
           </a>
         </p>
         <p style="font-size:17px;line-height:1.6;margin-bottom:20px">
-          If you are considering a senior executive appointment with international scope, I would be happy to arrange a conversation about the role, the organisation and where my experience could contribute.
+          If you are considering an international commercial, business development or partnership opportunity, I would be happy to arrange a conversation about the role, the organisation and where my experience could contribute.
         </p>
         <p style="text-align:center;margin:28px 0">
           <a href="https://calendly.com/hello-giuseppefunaro/30min"
