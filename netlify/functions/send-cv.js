@@ -22,7 +22,7 @@ exports.handler = async function(event) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Server configuration error' }) };
   }
 
-  const cvUrl = 'https://giuseppefunaro.com/cv.pdf';
+  const cvUrl = 'https://giuseppefunaro.com/Giuseppe_Funaro_CV.pdf';
 
   // Email to visitor with CV link
   const visitorEmail = {
@@ -42,13 +42,12 @@ exports.handler = async function(event) {
           </a>
         </p>
         <p style="font-size:17px;line-height:1.6;margin-bottom:20px">
-          If you'd like to explore how I might be able to help — whether as an advisor, interim executive,
-          or on a specific project — I'm happy to find 30 minutes to talk.
+          If you are considering a senior executive appointment with international scope, I would be happy to arrange a conversation about the role, the organisation and where my experience could contribute.
         </p>
         <p style="text-align:center;margin:28px 0">
           <a href="https://calendly.com/hello-giuseppefunaro/30min"
              style="border:1px solid #c79a4b;color:#c79a4b;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:15px;display:inline-block">
-            Book a call
+            Arrange a conversation
           </a>
         </p>
         <p style="font-size:17px;line-height:1.6;margin-top:32px">
