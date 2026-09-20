@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js-ready')</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giuseppe Funaro · International Commercial Executive & Managing Director</title>
@@ -154,7 +155,7 @@ section{padding:108px 0;position:relative}
 .sec-head{margin-bottom:54px}
 .sec-tag{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);font-weight:600}
 .sec-head h2{font-size:clamp(30px,5vw,46px);margin-top:12px;color:#fff}
-.reveal{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal{transition:.8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
 /* ABOUT */
@@ -389,9 +390,108 @@ footer .accent{font-style:italic}
   h1,h2,h3{page-break-after:avoid}
   .tl-item{page-break-inside:avoid}
 }
+
+/* ==========================================================
+   DESIGN REFRESH — depth, texture, iconography, motion polish
+   ========================================================== */
+:root{
+  --gold-deep:#8a6423;
+  --shadow-gold:0 20px 50px -12px rgba(199,154,75,.28);
+  --radius:16px;
+}
+
+/* film-grain texture for a tactile, premium surface */
+.grain{position:fixed;inset:-100px;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* scroll progress */
+.progress-rail{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;background:rgba(255,255,255,.06)}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--gold-deep),var(--accent),var(--accent2));transition:width .1s linear;box-shadow:0 0 12px rgba(227,193,120,.6)}
+nav{top:2px}
+
+/* section numbering, editorial style */
+body{counter-reset:secnum}
+.sec-head{counter-increment:secnum}
+.sec-head .sec-tag{display:flex;align-items:center;gap:10px}
+.sec-head .sec-tag::before{content:counter(secnum,decimal-leading-zero);font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:15px;letter-spacing:0;color:rgba(227,193,120,.45)}
+.sec-head .sec-tag::after{content:'';flex:0 0 34px;height:1px;background:linear-gradient(90deg,rgba(227,193,120,.5),transparent)}
+
+/* refined card surfaces: hairline top highlight + deeper hover lift */
+.tcard,.chip,.ins-card,.engage-card,.stat{position:relative;border-radius:var(--radius);backdrop-filter:blur(2px)}
+.tcard::before,.chip::before,.ins-card::before,.engage-card::before,.stat::before{
+  content:'';position:absolute;top:-1px;left:14px;right:14px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(227,193,120,0),transparent);opacity:0;transition:.35s}
+.tcard:hover::before,.chip:hover::before,.ins-card:hover::before,.engage-card:hover::before,.stat:hover::before{
+  background:linear-gradient(90deg,transparent,rgba(227,193,120,.85),transparent);opacity:1}
+.chip:hover,.ins-card:hover,.engage-card:hover{box-shadow:var(--shadow-gold)}
+.stat:hover{box-shadow:0 18px 40px -14px rgba(199,154,75,.3)}
+
+/* chip icon */
+.chip-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,rgba(199,154,75,.16),rgba(199,154,75,.03));color:var(--accent2);margin-bottom:14px}
+.chip-icon svg{width:18px;height:18px}
+
+/* engage icon, upgraded ring */
+.engage-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 30% 30%,rgba(199,154,75,.22),rgba(199,154,75,.04));
+  color:var(--accent2);border:1px solid rgba(227,193,120,.25);font-size:initial}
+.engage-icon svg{width:22px;height:22px}
+.engage-card:hover .engage-icon{border-color:rgba(227,193,120,.6);background:radial-gradient(circle at 30% 30%,rgba(199,154,75,.32),rgba(199,154,75,.06))}
+
+/* hero photo: soften into a portrait plate rather than a stock rounded-rect */
+.hero-photo-wrap img,.hero-photo-mobile img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.hero-photo-wrap:hover img{transform:scale(1.035)}
+.hero-photo-wrap{padding:10px}
+.hero-photo-wrap::after{content:'';position:absolute;left:10px;right:10px;top:10px;bottom:10px;border-radius:14px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none}
+.hero-photo-wrap::before{animation:ringspin 10s linear infinite}
+@keyframes ringspin{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(8deg)}}
+
+/* buttons: light-sweep on hover, consistent icon sizing */
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn svg{flex-shrink:0}
+.btn::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.35) 40%,transparent 60%);
+  transform:translateX(-120%);transition:transform .6s ease}
+.btn:hover::before{transform:translateX(120%)}
+.btn-ghost::before,.btn-dl::before{background:linear-gradient(115deg,transparent 20%,rgba(227,193,120,.18) 40%,transparent 60%)}
+
+/* chat button icon colour + refined shadow */
+.chat-btn{color:#1a1206}
+.chat-btn svg{position:relative;z-index:1}
+
+/* timeline: subtle panel + pulse on the current role */
+.tl-item{border-radius:14px;padding-top:14px;padding-bottom:14px;padding-right:14px;transition:.35s}
+.tl-item:hover{background:rgba(255,255,255,.025)}
+.tl-item:first-child .tl-dot{background:var(--accent2);box-shadow:0 0 0 6px rgba(199,154,75,.18)}
+.tl-item:first-child .tl-dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(227,193,120,.5);animation:pulse-ring 2.4s ease-out infinite}
+@keyframes pulse-ring{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+
+/* eyebrow badge: quiet shimmer */
+.eyebrow{position:relative;overflow:hidden}
+.eyebrow::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(227,193,120,.25) 50%,transparent 70%);
+  transform:translateX(-140%);animation:shimmer 5s ease-in-out 1.6s infinite}
+@keyframes shimmer{0%,60%,100%{transform:translateX(-140%)}80%{transform:translateX(140%)}}
+
+/* logo strip: quieter, more premium chips */
+.logo-chip{background:rgba(255,255,255,.02);position:relative}
+.logo-chip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent2);display:inline-block;margin-right:9px;opacity:.55}
+
+/* reveal: progressive enhancement — visible by default, only animated once JS confirms it can run */
+.js-ready .reveal{opacity:0;transform:translateY(34px)}
+.js-ready .reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .js-ready .reveal{opacity:1;transform:none}
+}
+
+@media print{ .grain,.progress-rail{display:none!important} }
 </style>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress-rail" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
 <nav id="nav">
   <div class="nav-in">
@@ -590,12 +690,12 @@ footer .accent{font-style:italic}
   <div class="wrap">
     <div class="sec-head reveal"><div class="sec-tag">Strengths</div><h2>Areas of expertise</h2></div>
     <div class="exp-grid">
-      <div class="chip reveal"><h3>P&amp;L Leadership</h3><p>Full ownership of P&amp;Ls above €200M, with budgeting, forecasting and performance accountability.</p></div>
-      <div class="chip reveal"><h3>International Growth</h3><p>Market entry and scaling across 18+ countries in Europe, the US and emerging markets.</p></div>
-      <div class="chip reveal"><h3>International Business Development</h3><p>Building revenue, opening markets and developing senior commercial relationships across borders.</p></div>
-      <div class="chip reveal"><h3>Channels &amp; Distribution</h3><p>Distributor, partner and channel development across multiple international markets.</p></div>
-      <div class="chip reveal"><h3>Strategic Partnerships</h3><p>Building commercial alliances with enterprises, institutions and market-entry partners.</p></div>
-      <div class="chip reveal"><h3>Turnaround &amp; M&amp;A</h3><p>Acquisition, integration and rapid performance recovery of business units.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V5M4 19h16M8 19V11M12 19V7M16 19v-5M20 19V9"/></svg></div><h3>P&amp;L Leadership</h3><p>Full ownership of P&amp;Ls above €200M, with budgeting, forecasting and performance accountability.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.5 3.4 5.7 3.4 9s-1.2 6.5-3.4 9c-2.2-2.5-3.4-5.7-3.4-9s1.2-6.5 3.4-9Z"/></svg></div><h3>International Growth</h3><p>Market entry and scaling across 18+ countries in Europe, the US and emerging markets.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16h16"/><path d="m7 15 4-5 3 3 5-7"/></svg></div><h3>International Business Development</h3><p>Building revenue, opening markets and developing senior commercial relationships across borders.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="7" height="12" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/><path d="M10 12h4"/></svg></div><h3>Channels &amp; Distribution</h3><p>Distributor, partner and channel development across multiple international markets.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="4.2"/><circle cx="16" cy="12" r="4.2"/></svg></div><h3>Strategic Partnerships</h3><p>Building commercial alliances with enterprises, institutions and market-entry partners.</p></div>
+      <div class="chip reveal"><div class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 0 1 15-6.7M21 12a9 9 0 0 1-15 6.7"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div><h3>Turnaround &amp; M&amp;A</h3><p>Acquisition, integration and rapid performance recovery of business units.</p></div>
     </div>
     <div style="margin-top:54px" class="reveal">
       <div class="sec-tag" style="margin-bottom:22px">Languages</div>
@@ -643,22 +743,22 @@ footer .accent{font-style:italic}
     <p class="engage-intro reveal">I am exploring substantial executive roles where my experience in international commercial growth, P&amp;L leadership, market entry and multi-country operations can contribute directly to an established organisation.</p>
     <div class="engage-grid">
       <div class="engage-card reveal">
-        <div class="engage-icon">🌍</div>
+        <div class="engage-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9Z"/></svg></div>
         <h3>Managing Director</h3>
         <p>Leadership of an international business, region or operating unit with clear commercial and P&amp;L accountability.</p>
       </div>
       <div class="engage-card reveal">
-        <div class="engage-icon">📈</div>
+        <div class="engage-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 20h18M6 20V11l4-3 4 4 4-6v10"/></svg></div>
         <h3>Commercial Director</h3>
         <p>Revenue growth, sales leadership, channel development and commercial transformation across multiple markets.</p>
       </div>
       <div class="engage-card reveal">
-        <div class="engage-icon">🧭</div>
+        <div class="engage-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="m14.8 9.2-2.3 5.9-5.9 2.3 2.3-5.9 5.9-2.3Z"/></svg></div>
         <h3>International Business Development</h3>
         <p>Opening markets, building partnerships and developing sustainable routes to revenue internationally.</p>
       </div>
       <div class="engage-card reveal">
-        <div class="engage-icon">🤝</div>
+        <div class="engage-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3 2.2-5 5-5s5 2 5 5M12 20c0-3 2.2-5 5-5s5 2 5 5"/></svg></div>
         <h3>Regional / International Leadership</h3>
         <p>Leading country managers, partners and multidisciplinary teams across complex international environments.</p>
       </div>
@@ -678,7 +778,7 @@ footer .accent{font-style:italic}
         <a href="https://wa.me/34650635404" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
         <a href="https://www.linkedin.com/in/giuseppe-funaro/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
         <a href="/Giuseppe_Funaro_CV.pdf" target="_blank" rel="noopener" download class="btn btn-dl">↓ Download CV</a>
-        <a href="#" onclick="openCVModal(event)" class="btn btn-ghost">✉️ Email me the CV</a>
+        <a href="#" onclick="openCVModal(event)" class="btn btn-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg> Email me the CV</a>
       </div>
 
       <div class="contact-form">
@@ -733,14 +833,29 @@ if(navBurger&&mobileMenu){
   });
   mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 }
-addEventListener('scroll',()=>{
+const progressBar=document.getElementById('progressBar');
+function onScroll(){
   nav.classList.toggle('scrolled',scrollY>40);
   if(backTop)backTop.classList.toggle('visible',scrollY>400);
-});
+  if(progressBar){
+    const h=document.documentElement;
+    const pct=(h.scrollTop||document.body.scrollTop)/((h.scrollHeight||document.body.scrollHeight)-h.clientHeight)*100;
+    progressBar.style.width=Math.min(100,Math.max(0,pct||0))+'%';
+  }
+}
+addEventListener('scroll',onScroll,{passive:true});
+onScroll();
 if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Scroll-reveal, with a safety net: if IntersectionObserver ever fails to
+// fire (blocked script, odd browser state, etc.) content never stays hidden.
+try{
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}catch(e){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2600);
 
 // counters
 const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){count(e.target);cio.unobserve(e.target);}})},{threshold:.5});
@@ -787,7 +902,8 @@ document.querySelectorAll('.lang-row').forEach(el=>lio.observe(el));
 
 <!-- CHAT WIDGET -->
 <button class="chat-btn" id="chatBtn" aria-label="Chat with Giuseppe's assistant">
-  💬<span class="chat-notif"></span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5h16a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H9l-4.5 4V17H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg>
+  <span class="chat-notif"></span>
 </button>
 
 <div class="chat-box" id="chatBox">
@@ -885,7 +1001,7 @@ document.getElementById('cvForm').addEventListener('submit',async function(e){
     if(!res.ok) throw new Error();
     this.innerHTML=`
       <div style="text-align:center;padding:16px 0">
-        <div style="font-size:40px;margin-bottom:16px">✉️</div>
+        <div style="width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:rgba(199,154,75,.12);display:flex;align-items:center;justify-content:center;color:var(--accent2)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg></div>
         <h3 style="color:#fff;margin-bottom:10px;font-family:'Fraunces',serif">Check your inbox</h3>
         <p style="color:var(--muted);font-size:15px;font-weight:300;line-height:1.6">
           The CV has been sent to your email.<br>If you don't see it, check your spam folder.
