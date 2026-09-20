@@ -28,7 +28,7 @@ exports.handler = async function(event) {
   const visitorEmail = {
     from: 'Giuseppe Funaro <hello@send.giuseppefunaro.com>',
     to: [email],
-    subject: 'Giuseppe Funaro — CV enclosed',
+    subject: 'Giuseppe Funaro - CV enclosed',
     html: `
       <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1a1a2e;padding:32px 24px">
         <p style="font-size:17px;line-height:1.6;margin-bottom:20px">Dear ${name},</p>
@@ -63,14 +63,14 @@ exports.handler = async function(event) {
   const notificationEmail = {
     from: 'CV Gate <hello@send.giuseppefunaro.com>',
     to: ['hello@giuseppefunaro.com'],
-    subject: `New CV request — ${name}${company ? ` (${company})` : ''}`,
+    subject: `New CV request - ${name}${company ? ` (${company})` : ''}`,
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;color:#333;padding:24px">
         <h2 style="margin-bottom:20px">New CV download request</h2>
         <table style="width:100%;border-collapse:collapse">
           <tr><td style="padding:8px 0;color:#666;width:90px">Name</td><td style="padding:8px 0"><strong>${name}</strong></td></tr>
           <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0"><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:8px 0;color:#666">Company</td><td style="padding:8px 0">${company || '—'}</td></tr>
+          <tr><td style="padding:8px 0;color:#666">Company</td><td style="padding:8px 0">${company || '-'}</td></tr>
         </table>
         <p style="margin-top:20px;color:#666;font-size:13px">CV link sent automatically.</p>
       </div>
