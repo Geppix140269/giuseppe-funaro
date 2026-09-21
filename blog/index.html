@@ -26,7 +26,7 @@ nav{padding:18px 28px;max-width:var(--maxw);margin:0 auto;display:flex;justify-c
 h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.15}
 h1 em{font-style:italic;color:var(--accent2)}
 .hero-sub{font-size:18px;color:#c4d0dc;font-weight:300;margin-top:18px;max-width:600px}
-.articles{padding:64px 0 96px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.articles{padding:64px 0 96px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 @media(max-width:780px){.articles{grid-template-columns:1fr}}
 .card{border:1px solid var(--line);border-radius:14px;padding:28px;background:rgba(255,255,255,.02);transition:.3s;display:flex;flex-direction:column}
 .card:hover{border-color:rgba(227,193,120,.4);background:rgba(199,154,75,.05);transform:translateY(-4px)}
@@ -48,10 +48,20 @@ h1 em{font-style:italic;color:var(--accent2)}
   <div class="hero">
     <div class="sec-tag">Insights</div>
     <h1>Perspectives on international <em>business</em></h1>
-    <p class="hero-sub">Thoughts on trade intelligence, market entry and cross-cultural leadership — drawn from 35 years at the sharp end of international commercial life.</p>
+    <p class="hero-sub">Thoughts on international business, AI-enabled growth, market entry and commercial leadership — drawn from decades of hands-on international experience.</p>
   </div>
 
   <div class="articles">
+    <a href="/blog/ai-summit-barcelona-2026.html" class="card">
+      <div class="card-tag">AI Summit Barcelona 2026</div>
+      <h2>Why I’m Going to AI Summit Barcelona: From International Business to Building with AI</h2>
+      <p>What Ponte Trade, Padel Sitges and thirty years of international commercial experience have taught me about what AI changes for business builders.</p>
+      <div class="card-footer">
+        <span class="card-read">Read article →</span>
+        <span class="card-time">6 min read</span>
+      </div>
+    </a>
+
     <a href="/blog/trade-intelligence.html" class="card">
       <div class="card-tag">Trade Intelligence</div>
       <h2>Why Trade Intelligence Is the Next Competitive Frontier</h2>
