@@ -26,7 +26,13 @@ exports.handler = async function(event) {
 - Earlier career built a national commercial operation worth $100M+ at Telegroup Italia via a 1,000-agent channel, with further roles at Cable & Wireless and AT&T.
 - Speaks English, Italian and Spanish fluently.
 - Based between Barcelona and London, EU and UK work eligible, and available to travel.
-- Current focus: international commercial leadership opportunities across business development, international sales, export markets, partnerships and market expansion, based in Barcelona and open to Spain, Italy and wider European markets.
+- Current positioning: combining 30+ years of international commercial experience with AI as a practical tool for growth, opportunity discovery, faster experimentation and new business creation.
+- Attending AI Summit Barcelona on 22-23 September 2026.
+- Padel Sitges / Padel Tribes: a working community product focused on helping padel players find each other, organise games and connect across clubs rather than only booking courts. It has registered players, active usage, club relationships and a partnership with Sports AI.
+- Ponte Trade: explores how AI can help companies identify cross-border opportunities, investigate market signals and move into structured commercial conversations.
+- ClassMA: explores how specialised AI agents can support SME property developers in finding opportunities, assessing evidence, identifying uncertainty and preparing development decisions.
+- Hereandnow: a breathing and focus application used as a compact experiment in rapid AI-assisted product development.
+- Open to international commercial leadership, business development, partnerships and new-venture opportunities where commercial judgement and AI-enabled execution can create measurable growth, based in Barcelona and available internationally.
 - Contact: hello@giuseppefunaro.com | WhatsApp +34 650 635 404 | Arrange a conversation: https://calendly.com/hello-giuseppefunaro/30min
 
 === HARD RULES ===
