@@ -23,7 +23,7 @@ exports.handler = async function(event) {
 - Strategic Adviser to Capitalimprese (Jun 2022-present), an Italian association reaching 70,000+ member enterprises; facilitated a €20M+ cross-border supply chain initiative with Austrian manufacturer SwissPor.
 - Former CCO of Euphony Ltd with full P&L accountability exceeding €200M across 18 European countries.
 - Former COO Prepaid at Tele2 UK, scaling the division from €70M to €220M revenue (3x in five years) across Europe and the US.
-- Earlier career built a national commercial operation worth $100M+ at Telegroup Italia via a 1,000-agent channel, with further roles at Cable & Wireless and AT&T.
+- Earlier career included commercial and business-development roles at Telegroup Italia, Cable & Wireless and AT&T. No unverified Telegroup revenue or channel-size figures may be quoted.
 - Speaks English, Italian and Spanish fluently.
 - Based between Barcelona and London, EU and UK work eligible, and available to travel.
 - Current positioning: combining 30+ years of international commercial experience with AI as a practical tool for growth, opportunity discovery, faster experimentation and new business creation.
