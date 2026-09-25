@@ -2,6 +2,48 @@
   publish = "."
   functions = "netlify/functions"
 
+# Giuseppe OS: the private shell and login page are rendered entirely by
+# functions, never by a static file on disk. Order matters - the more
+# specific /os/login rule must come before the /os/* wildcard.
+[[redirects]]
+  from = "/os/login"
+  to = "/.netlify/functions/os-login-page"
+  status = 200
+
+[[redirects]]
+  from = "/os"
+  to = "/.netlify/functions/os-shell"
+  status = 200
+
+[[redirects]]
+  from = "/os/*"
+  to = "/.netlify/functions/os-shell"
+  status = 200
+
+[[redirects]]
+  from = "/api/os/login"
+  to = "/.netlify/functions/os-login"
+  status = 200
+
+[[redirects]]
+  from = "/api/os/logout"
+  to = "/.netlify/functions/os-logout"
+  status = 200
+
+[[redirects]]
+  from = "/api/os/today"
+  to = "/.netlify/functions/os-today"
+  status = 200
+
+# Defense in depth: never let the raw functions source be served statically,
+# even though Netlify already excludes the Functions directory from the
+# published site by default.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/"
+  status = 404
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
