@@ -30,7 +30,6 @@ exports.handler = async function(event) {
 - Speaks English, Italian and Spanish fluently.
 - Based between Barcelona and London, EU and UK work eligible, and available to travel.
 - Current positioning: combining 30+ years of international commercial experience with AI as a practical tool for growth, opportunity discovery, faster experimentation and new business creation.
-- Attending AI Summit Barcelona on 22-23 September 2026.
 - Padel Sitges / Padel Tribes: a working community product focused on helping padel players find each other, organise games and connect across clubs rather than only booking courts. It has registered players, active usage, club relationships and a partnership with Sports AI.
 - Ponte Trade: explores how AI can help companies identify cross-border opportunities, investigate market signals and move into structured commercial conversations.
 - ClassMA: explores how specialised AI agents can support SME property developers in finding opportunities, assessing evidence, identifying uncertainty and preparing development decisions.
