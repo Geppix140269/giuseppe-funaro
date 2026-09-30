@@ -954,33 +954,6 @@ document.querySelectorAll('.lang-row').forEach(el=>lio.observe(el));
 
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
-<!-- CV GATE MODAL -->
-<div class="modal-overlay" id="cvModal">
-  <div class="modal modal-wrap">
-    <button class="modal-close" id="cvModalClose">×</button>
-    <h3>Get my CV</h3>
-    <p>Enter your email and the PDF will be sent to you directly. I may follow up personally.</p>
-    <form id="cvForm" action="https://formspree.io/f/xaqzzyrr" method="POST">
-      <input type="hidden" name="_subject" value="CV Download Request">
-      <input type="hidden" name="_next" value="about:blank">
-      <div class="modal-field">
-        <label for="cvName">Your name</label>
-        <input type="text" id="cvName" name="name" required placeholder="Full name">
-      </div>
-      <div class="modal-field">
-        <label for="cvEmail">Your email</label>
-        <input type="email" id="cvEmail" name="email" required placeholder="your@email.com">
-      </div>
-      <div class="modal-field">
-        <label for="cvCompany">Company <span style="color:var(--muted);font-size:11px">(optional)</span></label>
-        <input type="text" id="cvCompany" name="company" placeholder="Organisation">
-      </div>
-      <button type="submit" class="btn btn-primary modal-submit">Send me the CV</button>
-      <p class="modal-note">Your details go only to Giuseppe. No mailing lists, ever.</p>
-    </form>
-  </div>
-</div>
-
 <!-- CHAT WIDGET -->
 <button class="chat-btn" id="chatBtn" aria-label="Chat with Giuseppe's assistant">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5h16a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H9l-4.5 4V17H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg>
@@ -998,7 +971,7 @@ document.querySelectorAll('.lang-row').forEach(el=>lio.observe(el));
   </div>
   <div class="chat-disclaimer">Answers are AI-generated from public profile information.</div>
   <div class="chat-msgs" id="chatMsgs">
-    <div class="msg bot">Hi. I'm Giuseppe's AI assistant. Ask me about his international commercial background, what he is building with AI, or opportunities to work together.</div>
+    <div class="msg bot">Hi. I'm Giuseppe's AI assistant. Ask me about his international commercial career, leadership experience, market-entry work, cross-border ventures or current opportunities.</div>
   </div>
   <div class="chat-input-row">
     <textarea class="chat-input" id="chatInput" placeholder="Ask a question…" rows="1"></textarea>
@@ -1059,39 +1032,6 @@ async function sendMsg(){
     addMsg('Something went wrong. Please try emailing hello@giuseppefunaro.com','bot');
   }
 }
-
-// CV Modal
-function openCVModal(e){e.preventDefault();document.getElementById('cvModal').classList.add('open')}
-document.getElementById('cvModalClose').addEventListener('click',()=>document.getElementById('cvModal').classList.remove('open'));
-document.getElementById('cvModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
-document.getElementById('cvForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const btn=this.querySelector('.modal-submit');
-  const data={
-    name:this.querySelector('[name="name"]').value,
-    email:this.querySelector('[name="email"]').value,
-    company:this.querySelector('[name="company"]').value
-  };
-  btn.textContent='Sending…';btn.disabled=true;
-  try{
-    const res=await fetch('/.netlify/functions/send-cv',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    if(!res.ok) throw new Error();
-    this.innerHTML=`
-      <div style="text-align:center;padding:16px 0">
-        <div style="width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:rgba(199,154,75,.12);display:flex;align-items:center;justify-content:center;color:var(--accent2)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg></div>
-        <h3 style="color:#fff;margin-bottom:10px;font-family:'Fraunces',serif">Check your inbox</h3>
-        <p style="color:var(--muted);font-size:15px;font-weight:300;line-height:1.6">
-          The CV has been sent to your email.<br>If you don't see it, check your spam folder.
-        </p>
-        <button onclick="document.getElementById('cvModal').classList.remove('open')"
-          class="btn btn-ghost" style="margin-top:24px;width:100%;justify-content:center">Close</button>
-      </div>`;
-  }catch(err){btn.textContent='Send me the CV';btn.disabled=false;}
-});
 
 function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function renderMd(s){
